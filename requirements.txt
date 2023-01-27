@@ -1,6 +1,4 @@
 pandas
-imblearn
-imbalanced-learn
 matplotlib
 numpy
 scikit-learn
