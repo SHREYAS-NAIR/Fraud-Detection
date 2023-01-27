@@ -37,7 +37,7 @@ def modelSelection():
         score = train.score(x_test,y_test)
         Al_Scores.append(score)
         # print(score)
-        print(algo_names[j],":",score)
+        print(algo_names[j],":",score*100)
         j+=1
     
     #Deciding final model
