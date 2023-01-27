@@ -1,13 +1,4 @@
 from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LinearRegression, SGDRegressor
-from sklearn.tree import DecisionTreeRegressor
-from sklearn.ensemble import RandomForestRegressor
-from xgboost import XGBRegressor
-from sklearn.neighbors import KNeighborsRegressor
-from sklearn.model_selection import cross_val_score
-from sklearn.svm import SVR
 from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
@@ -15,11 +6,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.svm import LinearSVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
-import warnings
-warnings.filterwarnings('ignore')
-
 from sklearn.linear_model import LogisticRegression
 from dataPreprocessing import data_preprocessing
+import warnings
+warnings.filterwarnings('ignore')
 
 # Mentioning the models for Classification
 dtc = tree.DecisionTreeClassifier()
