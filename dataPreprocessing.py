@@ -14,7 +14,7 @@ def data_preprocessing():
     pd.set_option('display.float_format', '{:.2f}'.format)
 
     #Removing outliers and unwanted columns
-    data = data.drop(['Unnamed: 0'], axis=1)
+    data = data.drop(['Unnamed: 0'], axis=1, inplace=True)
     data = data.drop(['TX_DATETIME'], axis=1)
     data = data[(data["TX_AMOUNT"]<75000)]
 
