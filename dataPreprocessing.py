@@ -30,3 +30,5 @@ def data_preprocessing():
     print("Balanced data: \n",new_tx_fraud.value_counts())
 
     return(new_balanced_data)
+
+data_preprocessing()
