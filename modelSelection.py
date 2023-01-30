@@ -21,7 +21,7 @@ svc = LinearSVC()
 
 def modelSelection():
     data = data_preprocessing()
-    print(type(data))
+    
     # Assigning the featurs as X and trarget as y
     X= data.drop(["TX_FRAUD"],axis =1)
     y= data["TX_FRAUD"]
