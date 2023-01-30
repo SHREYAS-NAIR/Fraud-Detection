@@ -9,15 +9,15 @@ def data_preprocessing():
     #To visualize outliers
     #seaborn.pairplot(data = data)
     #plt.show()
-
-    #Changing values from scientific notation to much readable notation
-    pd.set_option('display.float_format', '{:.2f}'.format)
-
+    
     #Removing outliers and unwanted columns
     data = data.drop(['Unnamed: 0'], axis=1)
     data = data.drop(['TX_DATETIME'], axis=1)
     data = data[(data["TX_AMOUNT"]<75000)]
-
+    
+    #Changing values from scientific notation to much readable notation
+    pd.set_option('display.float_format', '{:.2f}'.format)
+    
     #Checking imbalance in data
     tx_fraud = data['TX_FRAUD']
     print("Imbalanced data: \n",tx_fraud.value_counts())
