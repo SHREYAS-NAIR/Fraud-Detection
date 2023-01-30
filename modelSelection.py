@@ -8,6 +8,7 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
 from sklearn.linear_model import LogisticRegression
 from dataPreprocessing import data_preprocessing
+import pandas as pd
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -20,7 +21,7 @@ knc = KNeighborsClassifier()
 svc = LinearSVC()
 
 def modelSelection():
-    data = data_preprocessing()
+    data = pd.DataFrame(data_preprocessing())
     
     # Assigning the featurs as X and trarget as y
     X= data.drop(["TX_FRAUD"],axis =1)
