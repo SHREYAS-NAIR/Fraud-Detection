@@ -1,6 +1,3 @@
-import os
-os.system("pip3 install -r requirements.txt")
-
 import pandas as pd
 
 def load_data():
