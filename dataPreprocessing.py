@@ -5,13 +5,12 @@ from imblearn.over_sampling import RandomOverSampler
 def data_preprocessing():
     #Loading data
     data = pd.DataFrame(load_data())
-
+    print(type(data))
     #To visualize outliers
     #seaborn.pairplot(data = data)
     #plt.show()
 
     #Removing outliers and unwanted columns
-    data = data.drop(['Unnamed: 0'], axis=1)
     data = data.drop(['TX_DATETIME'], axis=1)
     data = data[(data["TX_AMOUNT"]<75000)]
 
@@ -30,5 +29,3 @@ def data_preprocessing():
     print("Balanced data: \n",new_tx_fraud.value_counts())
 
     return(new_balanced_data)
-
-data_preprocessing()
