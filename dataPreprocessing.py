@@ -5,11 +5,10 @@ from imblearn.over_sampling import RandomOverSampler
 def data_preprocessing():
     #Loading data
     data = pd.DataFrame(load_data())
-    print(type(data))
     #To visualize outliers
     #seaborn.pairplot(data = data)
     #plt.show()
-
+    print(data.keys())
     #Removing outliers and unwanted columns
     data = data.drop(['Unnamed: 0'], axis=1)
     data = data.drop(['TX_DATETIME'], axis=1)
