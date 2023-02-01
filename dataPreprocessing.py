@@ -11,6 +11,7 @@ def data_preprocessing():
     #plt.show()
 
     #Removing outliers and unwanted columns
+    data = data.drop(['Unnamed: 0'], axis=1)
     data = data.drop(['TX_DATETIME'], axis=1)
     data = data[(data["TX_AMOUNT"]<75000)]
 
