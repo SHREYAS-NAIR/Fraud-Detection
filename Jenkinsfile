@@ -12,6 +12,11 @@ pipeline{
                 git 'https://github.com/SHREYASNAIR129/Fraud-Detection.git'
             }
         }
+        stage("installing_requirements"){
+            steps{
+                sh label: '', script: 'python3 installing_requirements.py'
+            }
+        }
         stage("loading_data"){
             steps{
                 sh label: '', script: 'python3 dataLoading.py'
