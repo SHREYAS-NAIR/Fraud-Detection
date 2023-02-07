@@ -4,12 +4,12 @@ pipeline{
     stages{
         stage("Checkout"){
             steps{
-                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/SHREYASNAIR129/Fraud-Detection.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/SHREYAS-NAIR/Fraud-Detection.git']]])
             }
         }
         stage("build"){
             steps{
-                git 'https://github.com/SHREYASNAIR129/Fraud-Detection.git'
+                git 'https://github.com/SHREYAS-NAIR/Fraud-Detection.git'
             }
         }
         stage("installing_requirements"){
