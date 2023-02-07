@@ -14,7 +14,6 @@ pipeline{
         }
         stage("installing_requirements"){
             steps{
-                sh label: '', script: 'pip install pandas'
                 sh label: '', script: 'python3 installingRequirements.py'
             }
         }
