@@ -1,4 +1,4 @@
-from sklearn.model_selection import train_test_split
+from dataSpliting import data_Spliting
 from sklearn import tree
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
@@ -7,11 +7,10 @@ from sklearn.svm import LinearSVC
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_score
 from sklearn.linear_model import LogisticRegression
-from dataPreprocessing import data_preprocessing
 import pandas as pd
+import pickle
 import warnings
 warnings.filterwarnings('ignore')
-
 # Mentioning the models for Classification
 dtc = tree.DecisionTreeClassifier()
 rfc = RandomForestClassifier()
@@ -21,16 +20,14 @@ knc = KNeighborsClassifier()
 svc = LinearSVC()
 
 def modelSelection():
-    data = pd.DataFrame(data_preprocessing())
+    x_train, x_test, y_train, y_test = data_Spliting()
     
-    # Assigning the featurs as X and trarget as y
-    X= data.drop(["TX_FRAUD"],axis =1)
-    y= data["TX_FRAUD"]
-    x_train, x_test, y_train, y_test = train_test_split(X, y,test_size=0.25, random_state=7)
+    #Name of algorithms used.
     algo_names = ["Decision Tree","Logistic Regression","Random Forest Classification","Gradient Boosting Classification","Linear Support Vector Classification","K Neighbours Classification"]
     algo = [dtc, lr, rfc, gbc, svc, knc] 
     
-    #Finding AI Scores for each classifier
+    print("Selecting the best model")
+    #Finding AI Scores for each classifier.
     Al_Scores = []
     j=0
     for i in algo:
@@ -47,7 +44,7 @@ def modelSelection():
         if Al_Scores[i] == max_value:
             best_model = algo[i]
             best_model_name = algo_names[i]
-    print("Best model is", best_model_name)
+    print("The best model is", best_model_name)
 
     #Finding metrics for the best model and printing them
     y_predict = best_model.predict(x_test)
@@ -60,5 +57,9 @@ def modelSelection():
     print("f1score = ", f1score)
     print("recall = ", recall)
     print("accuracy = ", accuracy)
+
+    #Creating pickle file for best model
+    print("Creating pickel file.")
+    pickle.dump(best_model, open('model.pkl', 'wb'))
     
 modelSelection()

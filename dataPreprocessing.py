@@ -1,27 +1,32 @@
 from dataLoading import load_data
-import pandas as pd
+from dataAnalysis import data_Analysis
 from imblearn.over_sampling import RandomOverSampler
+import pandas as pd
+import matplotlib.pyplot as plt
+
 
 def data_preprocessing():
+    #Analysing data before processing it.
+    data_Analysis()
+
     #Loading data
     data = pd.DataFrame(load_data())
-    #To visualize outliers
-    #seaborn.pairplot(data = data)
-    #plt.show()
-    print(data.keys())
-    #Removing outliers and unwanted columns
-    data = data.drop(['Unnamed: 0'], axis=1)
-    data = data.drop(['TX_DATETIME'], axis=1)
-    data = data[(data["TX_AMOUNT"]<75000)]
-
-    #Changing values from scientific notation to much readable notation
-    pd.set_option('display.float_format', '{:.2f}'.format)
     
-    #Checking imbalance in data
-    tx_fraud = data['TX_FRAUD']
-    print("Imbalanced data: \n",tx_fraud.value_counts())
+    print("Preprocessing the data.")
+    #Droping null values
+    print("Droping null values")
+    data.dropna()
+    print("Null values dropped")
+    print(data.isnull().sum())
+
+    #Dropping duplicate values
+    print("Droping Duplicate values")
+    data.drop_duplicates()
+    print("Duplicates dropped")
 
     #Random Oversampling of majority class to balance data
+    print("Oversampling to balance data")
+    tx_fraud = data['TX_FRAUD']
     rus = RandomOverSampler(sampling_strategy="minority")
     new_balanced_data, new_tx_fraud = rus.fit_resample(data,tx_fraud)
 
